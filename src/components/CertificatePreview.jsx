@@ -1,54 +1,59 @@
-import { forwardRef } from 'react'
-import ClassicCertificate from '../templates/ClassicCertificate'
+import { forwardRef } from "react";
+import ClassicCertificate from "./ClassicCertificate";
 
+/**
+ * Renders ClassicCertificate inside a scaled preview wrapper.
+ * The ref points to the actual A4-sized div (210mm × 297mm) used for PDF capture.
+ */
 const CertificatePreview = forwardRef(function CertificatePreview(
-  { student, institutionName },
+  { student, config },
   ref,
 ) {
-  const data = student || {
-    Name: '',
-    Course: '',
-    Certificate_ID: '',
-    Issue_Date: '',
-  }
+  const SCALE = 0.72;
 
   return (
-    <div className="rounded-lg border bg-white p-4" >
-      <div className="flex items-center justify-between">
-        <div>
-          <div className="text-lg font-semibold text-slate-900">
-            Certificate Preview
-          </div>
-          <div className="text-sm text-slate-600">
-            {student
-              ? 'Preview updates based on the selected student.'
-              : 'Select a student to preview.'}
-          </div>
-        </div>
-      </div>
-
-      <div className="mt-4 overflow-auto">
+    <div className="rounded-xl border bg-slate-200 p-4">
+      {/* Outer container collapses to the visual (scaled) height */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          /* Push up by the space that the CSS box still occupies after scaling */
+          marginBottom: `calc(297mm * ${SCALE - 1})`,
+        }}
+      >
         <div
-          ref={ref}
-          className="mx-auto"
           style={{
-            width: 1123,
-            height: 794,
-            backgroundColor: '#ffffff',
-            boxShadow: '0 1px 2px rgba(0, 0, 0, 0.06)',
+            transform: `scale(${SCALE})`,
+            transformOrigin: "top center",
           }}
         >
-          <ClassicCertificate
-            institutionName={institutionName}
-            name={data.Name}
-            course={data.Course}
-            certificateId={data.Certificate_ID}
-            issueDate={data.Issue_Date}
-          />
+          {/* This div is what html2canvas captures — keep it exactly A4 */}
+          <div
+            ref={ref}
+            style={{
+              width: "210mm",
+              height: "297mm",
+              backgroundColor: "#ffffff",
+              position: "relative",
+              boxShadow: "0 4px 32px rgba(0,0,0,0.18)",
+            }}
+          >
+            <ClassicCertificate
+              name={student?.Name}
+              prn={student?.PRN}
+              issueDate={student?.Issue_Date}
+              certificateId={student?.Certificate_ID}
+              subjectCode={config?.subjectCode}
+              course={config?.course}
+              semester={config?.semester}
+              academicYear={config?.academicYear}
+            />
+          </div>
         </div>
       </div>
     </div>
-  )
-})
+  );
+});
 
-export default CertificatePreview
+export default CertificatePreview;
