@@ -44,7 +44,7 @@ const CertificatePreview = forwardRef(function CertificatePreview(
 
   return (
     <>
-      <div className="surface-card flex h-full max-h-full flex-col p-4 sm:p-5">
+      <div className="surface-card flex flex-col p-4 sm:p-5">
         <div className="mb-4 flex flex-wrap items-center justify-between gap-3">
           <div>
             <h2 className="font-display text-3xl leading-none text-[var(--ink-900)]">
@@ -69,14 +69,9 @@ const CertificatePreview = forwardRef(function CertificatePreview(
 
         <div
           ref={viewportRef}
-          className="relative flex-1 overflow-auto rounded-3xl border border-[rgba(16,35,56,0.12)] bg-[linear-gradient(145deg,_rgba(246,250,253,0.9)_0%,_rgba(248,244,237,0.85)_100%)] p-3 sm:p-5"
+          className="relative flex-1 overflow-auto overflow-x-hidden rounded-3xl border border-[rgba(16,35,56,0.12)] bg-[linear-gradient(145deg,_rgba(246,250,253,0.9)_0%,_rgba(248,244,237,0.85)_100%)] p-3 sm:p-5"
         >
-          <div
-            className="mx-auto flex w-fit justify-center"
-            style={{
-              marginBottom: `calc(${A4_HEIGHT_MM}mm * ${scale - 1})`,
-            }}
-          >
+          <div className="mx-auto flex w-fit justify-center">
             <div
               style={{
                 transform: `scale(${scale})`,
@@ -95,6 +90,7 @@ const CertificatePreview = forwardRef(function CertificatePreview(
                 <Template
                   name={student?.Name}
                   prn={student?.PRN}
+                  studentClass={student?.Class}
                   issueDate={student?.Issue_Date}
                   certificateId={student?.Certificate_ID}
                   subjectCode={config?.subjectCode}
@@ -145,6 +141,7 @@ const CertificatePreview = forwardRef(function CertificatePreview(
           <Template
             name={student?.Name}
             prn={student?.PRN}
+            studentClass={student?.Class}
             issueDate={student?.Issue_Date}
             certificateId={student?.Certificate_ID}
             subjectCode={config?.subjectCode}

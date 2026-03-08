@@ -43,7 +43,13 @@ function ModernCertificate(props) {
         }}
       />
 
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "start" }}>
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "space-between",
+          alignItems: "start",
+        }}
+      >
         <div>
           <div
             style={{
@@ -68,7 +74,9 @@ function ModernCertificate(props) {
             {college.collegeName}
           </div>
           <div style={{ marginTop: "4px", fontSize: "13px", color: "#47667d" }}>
-            {[college.departmentName, college.autonomyLine].filter(Boolean).join(" | ")}
+            {[college.departmentName, college.autonomyLine]
+              .filter(Boolean)
+              .join(" | ")}
           </div>
         </div>
         <div
@@ -165,7 +173,9 @@ function ModernCertificate(props) {
         </div>
 
         <p style={{ marginTop: "14px", marginBottom: 0 }}>
-          {"of the T.Y.B.Sc. (NEP 1.0) class has successfully completed all practicals in "}
+          {"of the "}
+          <strong>{fields.studentClass}</strong>
+          {" class has successfully completed all practicals in "}
           <strong>{fields.subjectCode}</strong>
           {" - "}
           <strong>{fields.course}</strong>
@@ -173,7 +183,9 @@ function ModernCertificate(props) {
           <strong>{fields.semester}</strong>
           {" of academic year "}
           <strong>{fields.academicYear}</strong>
-          {". This work has been examined and duly signed by the concerned teachers."}
+          {
+            ". This work has been examined and duly signed by the concerned teachers."
+          }
         </p>
       </div>
 
@@ -182,7 +194,7 @@ function ModernCertificate(props) {
           position: "absolute",
           left: "72px",
           right: "56px",
-          bottom: "187px",
+          bottom: "247px",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "end",
@@ -211,7 +223,7 @@ function ModernCertificate(props) {
           position: "absolute",
           left: "72px",
           right: "56px",
-          bottom: "84px",
+          bottom: "140px",
           display: "grid",
           gridTemplateColumns: "1fr auto 1fr",
           columnGap: "26px",
@@ -271,9 +283,9 @@ function ModernCertificate(props) {
       <div
         style={{
           position: "absolute",
-          left: "72px",
-          right: "56px",
-          bottom: "36px",
+          left: "136px",
+          right: "136px",
+          bottom: "56px",
           display: "flex",
           justifyContent: "space-between",
           fontSize: "13px",

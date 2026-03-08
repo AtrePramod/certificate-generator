@@ -3,6 +3,7 @@ function ClassicCertificate({
   department = "DEPARTMENT OF STATISTICS",
   name,
   prn,
+  className: studentClass,
   course = "Design of Experiment Course (Major)",
   subjectCode = "STM025105",
   academicYear = "2025-26",
@@ -41,12 +42,12 @@ function ClassicCertificate({
       <div className="mt-14 text-[18px] leading-8 px-10 text-justify">
         <p>
           This is to certify that <strong>{name || "Student Name"}</strong>
-          bearing PRN No. <strong>{prn || "SPXXXXXXXX"}</strong> of the
-          T.Y.B.Sc. (NEP 1.0) class has successfully completed all the
-          practicals in <strong>{subjectCode}</strong> Practicals in{" "}
-          <strong>{course}</strong> during the academic year{" "}
-          <strong>{academicYear}</strong> and that the same has been examined
-          and duly signed by the concerned teachers.
+          bearing PRN No. <strong>{prn || "SPXXXXXXXX"}</strong> of the{" "}
+          <strong>{studentClass || "T.Y.B.Sc. (NEP 1.0)"}</strong> class has
+          successfully completed all the practicals in{" "}
+          <strong>{subjectCode}</strong> Practicals in <strong>{course}</strong>{" "}
+          during the academic year <strong>{academicYear}</strong> and that the
+          same has been examined and duly signed by the concerned teachers.
         </p>
       </div>
 

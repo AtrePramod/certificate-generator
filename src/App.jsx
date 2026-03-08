@@ -45,21 +45,21 @@ const COURSE_CONFIG_FIELDS = [
 ];
 
 const COLLEGE_CONFIG_FIELDS = [
-  {
-    key: "trustName",
-    label: "Trust / Mandali Name",
-    placeholder: "Shikshana Prasaraka Mandali's",
-  },
-  {
-    key: "collegeName",
-    label: "College Name",
-    placeholder: "SIR PARASHURAMBHAU COLLEGE, PUNE-30",
-  },
-  {
-    key: "autonomyLine",
-    label: "Autonomy Line",
-    placeholder: "Empowered Autonomous",
-  },
+  // {
+  //   key: "trustName",
+  //   label: "Trust / Mandali Name",
+  //   placeholder: "Shikshana Prasaraka Mandali's",
+  // },
+  // {
+  //   key: "collegeName",
+  //   label: "College Name",
+  //   placeholder: "SIR PARASHURAMBHAU COLLEGE, PUNE-30",
+  // },
+  // {
+  //   key: "autonomyLine",
+  //   label: "Autonomy Line",
+  //   placeholder: "Empowered Autonomous",
+  // },
   {
     key: "departmentName",
     label: "Department Name",
@@ -162,7 +162,11 @@ function App() {
         await document.fonts.ready;
       }
 
-      const pdf = new jsPDF({ orientation: "portrait", unit: "mm", format: "a4" });
+      const pdf = new jsPDF({
+        orientation: "portrait",
+        unit: "mm",
+        format: "a4",
+      });
 
       for (let i = 0; i < students.length; i += 1) {
         setSelectedIndex(i);
@@ -242,7 +246,8 @@ function App() {
             <div className="surface-card p-5">
               <div className="section-title">Course Configuration</div>
               <p className="section-copy">
-                These values are injected into every certificate while exporting.
+                These values are injected into every certificate while
+                exporting.
               </p>
               <div className="mt-4 flex flex-col gap-3">
                 {COURSE_CONFIG_FIELDS.map(({ key, label, placeholder }) => (
@@ -291,34 +296,10 @@ function App() {
             </div>
 
             <div className="surface-card p-5">
-              <div className="section-title">Certificate Theme</div>
-              <p className="section-copy">
-                Select the design style used in preview and all PDF downloads.
-              </p>
-              <div className="mt-4 grid gap-2.5">
-                {CERTIFICATE_THEMES.map((theme) => {
-                  const isActive = certificateTheme === theme.id;
-
-                  return (
-                    <button
-                      key={theme.id}
-                      type="button"
-                      onClick={() => setCertificateTheme(theme.id)}
-                      className={`theme-option ${isActive ? "theme-option-active" : ""}`}
-                      aria-pressed={isActive}
-                    >
-                      <span className="theme-option-title">{theme.title}</span>
-                      <span className="theme-option-desc">{theme.description}</span>
-                    </button>
-                  );
-                })}
-              </div>
-            </div>
-
-            <div className="surface-card p-5">
               <div className="section-title">Export Center</div>
               <p className="section-copy">
-                Download the selected certificate or generate a complete batch PDF.
+                Download the selected certificate or generate a complete batch
+                PDF.
               </p>
               <div className="mt-4 flex flex-col gap-2.5">
                 <DownloadButton
@@ -348,20 +329,46 @@ function App() {
                 ) : null}
               </div>
             </div>
-
-            <StudentTable
-              students={students}
-              selectedIndex={selectedIndex}
-              onSelect={setSelectedIndex}
-            />
           </section>
 
-          <section className="xl:sticky xl:top-6 xl:h-[calc(100vh-3rem)]">
+          <section className="xl:sticky xl:top-6">
+            <div className="surface-card p-5 mb-5">
+              <div className="section-title">Certificate Theme</div>
+              <p className="section-copy">
+                Select the design style used in preview and all PDF downloads.
+              </p>
+              <div className="mt-4 grid gap-2.5">
+                {CERTIFICATE_THEMES.map((theme) => {
+                  const isActive = certificateTheme === theme.id;
+
+                  return (
+                    <button
+                      key={theme.id}
+                      type="button"
+                      onClick={() => setCertificateTheme(theme.id)}
+                      className={`theme-option ${isActive ? "theme-option-active" : ""}`}
+                      aria-pressed={isActive}
+                    >
+                      <span className="theme-option-title">{theme.title}</span>
+                      <span className="theme-option-desc">
+                        {theme.description}
+                      </span>
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
             <CertificatePreview
               ref={certificateRef}
               student={selectedStudent}
               config={config}
               theme={certificateTheme}
+            />
+            <div className="mt-5" />
+            <StudentTable
+              students={students}
+              selectedIndex={selectedIndex}
+              onSelect={setSelectedIndex}
             />
           </section>
         </main>

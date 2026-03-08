@@ -41,8 +41,10 @@ function ManualStudentEntry({ onAddStudent }) {
     const certificateId = form.Certificate_ID.trim();
     const issueDate = formatDate(form.Issue_Date);
 
-    if (!name || !prn || !certificateId || !issueDate) {
-      setError("Please fill Name, PRN, Certificate ID, and Issue Date.");
+    const studentClass = form.Class.trim();
+
+    if (!name || !prn || !studentClass || !certificateId || !issueDate) {
+      setError("Please fill Name, PRN, Class, Certificate ID, and Issue Date.");
       return;
     }
 
@@ -51,6 +53,7 @@ function ManualStudentEntry({ onAddStudent }) {
       PRN: prn,
       Certificate_ID: certificateId,
       Issue_Date: issueDate,
+      Class: studentClass,
     });
 
     setForm((prev) => ({
@@ -58,6 +61,7 @@ function ManualStudentEntry({ onAddStudent }) {
       Name: "",
       PRN: "",
       Certificate_ID: "",
+      Class: "",
     }));
     setSuccess("Student added. Preview updated.");
   };
@@ -86,6 +90,16 @@ function ManualStudentEntry({ onAddStudent }) {
             value={form.PRN}
             onChange={(event) => updateField("PRN", event.target.value)}
             placeholder="Enter PRN"
+            className="input-modern"
+          />
+        </label>
+
+        <label className="block">
+          <span className="field-label">Class</span>
+          <input
+            value={form.Class}
+            onChange={(event) => updateField("Class", event.target.value)}
+            placeholder="Example: TY BSc Statistics"
             className="input-modern"
           />
         </label>

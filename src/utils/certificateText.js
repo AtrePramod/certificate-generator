@@ -1,6 +1,7 @@
 const LIMITS = {
   name: 64,
   prn: 28,
+  studentClass: 60,
   subjectCode: 26,
   course: 140,
   semester: 12,
@@ -54,6 +55,7 @@ function normalizeIssueDate(value) {
 export function normalizeCertificateFields({
   name,
   prn,
+  studentClass,
   subjectCode,
   course,
   academicYear,
@@ -64,12 +66,25 @@ export function normalizeCertificateFields({
   return {
     name: clampText(name || "STUDENT NAME", LIMITS.name).toUpperCase(),
     prn: clampText(prn || "SPXXXXXXXX", LIMITS.prn).toUpperCase(),
-    subjectCode: clampText(subjectCode || "STM025105", LIMITS.subjectCode).toUpperCase(),
-    course: clampText(course || "Design of Experiment Course (Major)", LIMITS.course),
+    studentClass: clampText(
+      studentClass || "T.Y.B.Sc. (NEP 1.0)",
+      LIMITS.studentClass,
+    ),
+    subjectCode: clampText(
+      subjectCode || "STM025105",
+      LIMITS.subjectCode,
+    ).toUpperCase(),
+    course: clampText(
+      course || "Design of Experiment Course (Major)",
+      LIMITS.course,
+    ),
     academicYear: clampText(academicYear || "2025-26", LIMITS.academicYear),
     semester: clampText(semester || "V", LIMITS.semester).toUpperCase(),
     issueDate: normalizeIssueDate(issueDate),
-    certificateId: clampText(certificateId || "", LIMITS.certificateId).toUpperCase(),
+    certificateId: clampText(
+      certificateId || "",
+      LIMITS.certificateId,
+    ).toUpperCase(),
   };
 }
 
@@ -87,17 +102,26 @@ export function normalizeCollegeFields({
   headStampLine3,
 }) {
   return {
-    trustName: clampText(trustName || "Shikshana Prasaraka Mandali's", LIMITS.trustName),
+    trustName: clampText(
+      trustName || "Shikshana Prasaraka Mandali's",
+      LIMITS.trustName,
+    ),
     collegeName: clampText(
       collegeName || "SIR PARASHURAMBHAU COLLEGE, PUNE-30",
       LIMITS.collegeName,
     ),
-    autonomyLine: clampText(autonomyLine || "Empowered Autonomous", LIMITS.autonomyLine),
+    autonomyLine: clampText(
+      autonomyLine || "Empowered Autonomous",
+      LIMITS.autonomyLine,
+    ),
     departmentName: clampText(
       departmentName || "Department of Statistics",
       LIMITS.departmentName,
     ),
-    inchargeName: clampText(inchargeName || "Mr. Kamble S D", LIMITS.inchargeName),
+    inchargeName: clampText(
+      inchargeName || "Mr. Kamble S D",
+      LIMITS.inchargeName,
+    ),
     inchargeTitle: clampText(
       inchargeTitle || "Practical In-Charge",
       LIMITS.inchargeTitle,
@@ -123,20 +147,21 @@ export function getTextDensity(fields) {
   const narrativeLength =
     fields.name.length +
     fields.prn.length +
+    fields.studentClass.length +
     fields.subjectCode.length +
     fields.course.length;
 
   if (narrativeLength > 210) {
-    return { bodyFontSize: 12.6, bodyLineHeight: 1.58, headingGap: 30 };
+    return { bodyFontSize: 12.6, bodyLineHeight: 1.58, headingGap: 33 };
   }
 
   if (narrativeLength > 170) {
-    return { bodyFontSize: 13.1, bodyLineHeight: 1.66, headingGap: 32 };
+    return { bodyFontSize: 13.1, bodyLineHeight: 1.66, headingGap: 35 };
   }
 
   if (narrativeLength > 140) {
-    return { bodyFontSize: 13.7, bodyLineHeight: 1.74, headingGap: 33 };
+    return { bodyFontSize: 13.7, bodyLineHeight: 1.74, headingGap: 36 };
   }
 
-  return { bodyFontSize: 14.2, bodyLineHeight: 1.84, headingGap: 34 };
+  return { bodyFontSize: 14.2, bodyLineHeight: 1.84, headingGap: 37 };
 }

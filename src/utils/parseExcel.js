@@ -3,6 +3,7 @@ import * as XLSX from "xlsx";
 const REQUIRED_COLUMNS = [
   "Name",
   "PRN",
+  "Class",
   "Certificate_ID",
   "Issue_Date",
 ];
@@ -11,6 +12,7 @@ function normalizeRow(row) {
   return {
     Name: String(row.Name ?? "").trim(),
     PRN: String(row.PRN ?? "").trim(),
+    Class: String(row.Class ?? "").trim(),
     Certificate_ID: String(row.Certificate_ID ?? "").trim(),
     Issue_Date: String(row.Issue_Date ?? "").trim(),
   };

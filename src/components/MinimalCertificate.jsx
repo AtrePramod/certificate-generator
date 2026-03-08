@@ -54,7 +54,9 @@ function MinimalCertificate(props) {
           {college.collegeName}
         </div>
         <div style={{ marginTop: "4px", fontSize: "13px", color: "#555555" }}>
-          {[college.departmentName, college.autonomyLine].filter(Boolean).join(" | ")}
+          {[college.departmentName, college.autonomyLine]
+            .filter(Boolean)
+            .join(" | ")}
         </div>
         <div
           style={{
@@ -94,7 +96,9 @@ function MinimalCertificate(props) {
         <strong>{fields.name}</strong>
         {" (PRN "}
         <strong>{fields.prn}</strong>
-        {") of T.Y.B.Sc. (NEP 1.0) has satisfactorily completed all practical work in "}
+        {") of "}
+        <strong>{fields.studentClass}</strong>
+        {" has satisfactorily completed all practical work in "}
         <strong>{fields.subjectCode}</strong>
         {": "}
         <strong>{fields.course}</strong>
@@ -102,7 +106,9 @@ function MinimalCertificate(props) {
         <strong>{fields.semester}</strong>
         {" for academic year "}
         <strong>{fields.academicYear}</strong>
-        {". The same has been examined and signed by the concerned teachers of the department."}
+        {
+          ". The same has been examined and signed by the concerned teachers of the department."
+        }
       </div>
 
       <div
@@ -110,7 +116,7 @@ function MinimalCertificate(props) {
           position: "absolute",
           left: "66px",
           right: "66px",
-          bottom: "186px",
+          bottom: "246px",
           display: "flex",
           justifyContent: "space-between",
           fontSize: "14px",
@@ -130,7 +136,7 @@ function MinimalCertificate(props) {
           position: "absolute",
           left: "66px",
           right: "66px",
-          bottom: "86px",
+          bottom: "146px",
           display: "flex",
           justifyContent: "space-between",
           alignItems: "end",
@@ -187,9 +193,9 @@ function MinimalCertificate(props) {
       <div
         style={{
           position: "absolute",
-          left: "66px",
-          right: "66px",
-          bottom: "38px",
+          left: "94px",
+          right: "94px",
+          bottom: "58px",
           display: "flex",
           justifyContent: "space-between",
           fontSize: "13px",

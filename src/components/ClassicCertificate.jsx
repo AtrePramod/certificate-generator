@@ -48,7 +48,9 @@ function ClassicCertificate(props) {
       />
 
       <div style={{ textAlign: "center" }}>
-        <div style={{ fontStyle: "italic", fontSize: "13px", marginBottom: "3px" }}>
+        <div
+          style={{ fontStyle: "italic", fontSize: "13px", marginBottom: "3px" }}
+        >
           {college.trustName}
         </div>
 
@@ -98,7 +100,8 @@ function ClassicCertificate(props) {
             fontSize: "17px",
             textDecoration: "underline",
             textDecorationColor: "#b08346",
-            fontFamily: '"Palatino Linotype", "Palatino", "Book Antiqua", serif',
+            fontFamily:
+              '"Palatino Linotype", "Palatino", "Book Antiqua", serif',
             letterSpacing: "1.35px",
           }}
         >
@@ -121,7 +124,9 @@ function ClassicCertificate(props) {
           overflowWrap: "anywhere",
         }}
       >
-        <p style={{ margin: 0, marginBottom: "8px" }}>This is to certify that</p>
+        <p style={{ margin: 0, marginBottom: "8px" }}>
+          This is to certify that
+        </p>
 
         <p
           style={{
@@ -161,7 +166,9 @@ function ClassicCertificate(props) {
         </p>
 
         <p style={{ marginTop: 0, marginBottom: 0 }}>
-          {"of the T.Y.B.Sc. (NEP 1.0) class has successfully completed all practicals in "}
+          {"of the "}
+          <strong>{fields.studentClass}</strong>
+          {" class has successfully completed all practicals in "}{" "}
           <strong>{fields.subjectCode}</strong>
           {" : Practicals in "}
           <strong>{fields.course}</strong>
@@ -169,18 +176,27 @@ function ClassicCertificate(props) {
           <strong>{fields.semester}</strong>
           {" for the academic year "}
           <strong>{fields.academicYear}</strong>
-          {" and that the same has been examined and duly signed by the concerned teachers."}
+          {
+            " and that the same has been examined and duly signed by the concerned teachers."
+          }
         </p>
       </div>
 
-      <div style={{ position: "absolute", left: "66px", bottom: "196px", fontSize: "15px" }}>
+      <div
+        style={{
+          position: "absolute",
+          left: "66px",
+          bottom: "260px",
+          fontSize: "15px",
+        }}
+      >
         Date: <strong>{fields.issueDate}</strong>
       </div>
 
       <div
         style={{
           position: "absolute",
-          bottom: "95px",
+          bottom: "145px",
           left: "64px",
           right: "64px",
           display: "flex",
@@ -204,7 +220,13 @@ function ClassicCertificate(props) {
           </div>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+          }}
+        >
           <div
             style={{
               width: "90px",
@@ -258,9 +280,9 @@ function ClassicCertificate(props) {
       <div
         style={{
           position: "absolute",
-          bottom: "38px",
-          left: "64px",
-          right: "64px",
+          bottom: "58px",
+          left: "94px",
+          right: "94px",
           display: "flex",
           justifyContent: "space-between",
           fontSize: "14px",

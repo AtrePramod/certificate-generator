@@ -64,7 +64,8 @@ function ExcelUpload({ onData }) {
     <div className="surface-card p-5">
       <div className="section-title">Data Import</div>
       <p className="section-copy">
-        Upload the source Excel sheet with student rows to generate certificates.
+        Upload the source Excel sheet with student rows to generate
+        certificates.
       </p>
 
       <input
@@ -125,6 +126,7 @@ function ExcelUpload({ onData }) {
       <div className="mt-4 flex flex-wrap gap-2">
         <span className="chip">Name</span>
         <span className="chip">PRN</span>
+        <span className="chip">Class</span>
         <span className="chip">Certificate_ID</span>
         <span className="chip">Issue_Date</span>
       </div>

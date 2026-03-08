@@ -12,7 +12,7 @@ function StudentTable({ students, selectedIndex, onSelect }) {
     }
 
     return withIndex.filter(({ student }) =>
-      [student.Name, student.PRN, student.Certificate_ID]
+      [student.Name, student.PRN, student.Class, student.Certificate_ID]
         .join(" ")
         .toLowerCase()
         .includes(term),
@@ -45,6 +45,7 @@ function StudentTable({ students, selectedIndex, onSelect }) {
               <th className="px-3 py-2">#</th>
               <th className="px-3 py-2">Name</th>
               <th className="px-3 py-2">PRN</th>
+              <th className="px-3 py-2">Class</th>
               <th className="px-3 py-2">Issue Date</th>
             </tr>
           </thead>
@@ -71,7 +72,10 @@ function StudentTable({ students, selectedIndex, onSelect }) {
                       {index + 1}
                     </td>
                     <td className="px-3 py-2 font-semibold">{student.Name}</td>
-                    <td className="px-3 py-2 font-mono text-xs">{student.PRN}</td>
+                    <td className="px-3 py-2 font-mono text-xs">
+                      {student.PRN}
+                    </td>
+                    <td className="px-3 py-2">{student.Class}</td>
                     <td className="px-3 py-2">{student.Issue_Date}</td>
                   </tr>
                 );
@@ -79,7 +83,7 @@ function StudentTable({ students, selectedIndex, onSelect }) {
             ) : (
               <tr>
                 <td
-                  colSpan={4}
+                  colSpan={5}
                   className="px-4 py-10 text-center text-sm text-[var(--ink-500)]"
                 >
                   {students.length
